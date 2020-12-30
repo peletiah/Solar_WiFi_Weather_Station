@@ -379,96 +379,102 @@ void setup() {
   char _adjusted_temp[8];                                // Buffer big enough for 7-character float
   dtostrf(adjusted_temp, 3, 1, _adjusted_temp);               // Leave room for too large numbers!
 
-  client.publish("home/weather/solarweatherstation/tempc", _adjusted_temp, 1);      // ,1 = retained
+  client.publish("homeassistant/sensor/solarweatherstation/tempc/config", "{\"device_class\": \"temperature\", \"name\": \"Temperature\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"°C\", \"value_template\": \"{{ value_json.temperature}}\" }", 1);      // ,1 = retained
+  delay(50);
+
+  client.publish("homeassistant/sensor/solarweatherstation/state", "{\"temperature\": " +_adjusted_temp + " }", 1);      // ,1 = retained
+  delay(50);
+
+  client.publish("homeassistant/sensor/solarweatherstation/tempc", _adjusted_temp, 1);      // ,1 = retained
   delay(50);
 
   char _adjusted_humi[8];                                // Buffer big enough for 7-character float
   dtostrf(adjusted_humi, 3, 0, _adjusted_humi);               // Leave room for too large numbers!
 
-  client.publish("home/weather/solarweatherstation/humi", _adjusted_humi, 1);      // ,1 = retained
+  client.publish("homeassistant/sensor/solarweatherstation/humi", _adjusted_humi, 1);      // ,1 = retained
   delay(50);
 
   char _measured_pres[8];                                // Buffer big enough for 7-character float
   dtostrf(measured_pres, 3, 0, _measured_pres);               // Leave room for too large numbers!
 
-  client.publish("home/weather/solarweatherstation/abshpa", _measured_pres, 1);      // ,1 = retained
+  client.publish("homeassistant/sensor/solarweatherstation/abshpa", _measured_pres, 1);      // ,1 = retained
   delay(50);
 
   char _rel_pressure_rounded[8];                                // Buffer big enough for 7-character float
   dtostrf(rel_pressure_rounded, 3, 0, _rel_pressure_rounded);               // Leave room for too large numbers!
 
-  client.publish("home/weather/solarweatherstation/relhpa", _rel_pressure_rounded, 1);      // ,1 = retained
+  client.publish("homeassistant/sensor/solarweatherstation/relhpa", _rel_pressure_rounded, 1);      // ,1 = retained
   delay(50);
 
   char _volt[8];                                // Buffer big enough for 7-character float
   dtostrf(volt, 3, 2, _volt);               // Leave room for too large numbers!
 
-  client.publish("home/weather/solarweatherstation/battv", _volt, 1);      // ,1 = retained
-  delay(50);
+  client.publish("homeassistant/sensor/solarweatherstation/battv", _volt, 1);      // ,1 = retained
+  delay(50/;
 
   char _DewpointTemperature[8];                                // Buffer big enough for 7-character float
   dtostrf(DewpointTemperature, 3, 1, _DewpointTemperature);               // Leave room for too large numbers!
 
-  client.publish("home/weather/solarweatherstation/dewpointc", _DewpointTemperature, 1);      // ,1 = retained
+  client.publish("homeassistant/sensor/solarweatherstation/dewpointc", _DewpointTemperature, 1);      // ,1 = retained
   delay(50);
 
   char _HeatIndex[8];                                // Buffer big enough for 7-character float
   dtostrf(HeatIndex, 3, 1, _HeatIndex);               // Leave room for too large numbers!
 
-  client.publish("home/weather/solarweatherstation/heatindexc", _HeatIndex, 1);      // ,1 = retained
+  client.publish("homeassistant/sensor/solarweatherstation/heatindexc", _HeatIndex, 1);      // ,1 = retained
   delay(50);
 
   char _accuracy_in_percent[8];                                // Buffer big enough for 7-character float
   dtostrf(accuracy_in_percent, 3, 0, _accuracy_in_percent);               // Leave room for too large numbers!
 
-  client.publish("home/weather/solarweatherstation/accuracy", _accuracy_in_percent, 1);      // ,1 = retained
+  client.publish("homeassistant/sensor/solarweatherstation/accuracy", _accuracy_in_percent, 1);      // ,1 = retained
   delay(50);
 
   char _DewPointSpread[8];                                // Buffer big enough for 7-character float
   dtostrf(DewPointSpread, 3, 1, _DewPointSpread);               // Leave room for too large numbers!
 
-  client.publish("home/weather/solarweatherstation/spreadc", _DewPointSpread, 1);      // ,1 = retained
+  client.publish("homeassistant/sensor/solarweatherstation/spreadc", _DewPointSpread, 1);      // ,1 = retained
   delay(50);
 
   char tmp1[128];
   ZambrettisWords.toCharArray(tmp1, 128);
-  client.publish("home/weather/solarweatherstation/zambrettisays", tmp1, 1);
+  client.publish("homeassistant/sensor/solarweatherstation/zambrettisays", tmp1, 1);
   delay(50);
 
   char tmp2[128];
   trend_in_words.toCharArray(tmp2, 128);
-  client.publish("home/weather/solarweatherstation/trendinwords", tmp2, 1);
+  client.publish("homeassistant/sensor/solarweatherstation/trendinwords", tmp2, 1);
   delay(50);
 
   char _trend[8];                                // Buffer big enough for 7-character float
   dtostrf(pressure_difference[11], 3, 2, _trend);               // Leave room for too large numbers!
 
-  client.publish("home/weather/solarweatherstation/trend", _trend, 1);      // ,1 = retained
+  client.publish("homeassistant/sensor/solarweatherstation/trend", _trend, 1);      // ,1 = retained
   delay(50);
 
   char _measured_vis[8];                                // Buffer big enough for 7-character float
   dtostrf(measured_vis, 3, 1, _measured_vis);               // Leave room for too large numbers!
 
-  client.publish("home/weather/solarweatherstation/vis", _measured_vis, 1);      // ,1 = retained
+  client.publish("homeassistant/sensor/solarweatherstation/vis", _measured_vis, 1);      // ,1 = retained
   delay(50);
 
   char _measured_ir[8];                                // Buffer big enough for 7-character float
   dtostrf(measured_ir, 3, 1, _measured_ir);               // Leave room for too large numbers!
 
-  client.publish("home/weather/solarweatherstation/ir", _measured_ir, 1);      // ,1 = retained
+  client.publish("homeassistant/sensor/solarweatherstation/ir", _measured_ir, 1);      // ,1 = retained
   delay(50);
 
 
   char _calculated_lx[8];                                // Buffer big enough for 7-character float
   dtostrf(calculated_lx, 3, 1, _calculated_lx);               // Leave room for too large numbers!
 
-  client.publish("home/weather/solarweatherstation/lux", _calculated_lx, 1);      // ,1 = retained
+  client.publish("homeassistant/sensor/solarweatherstation/lux", _calculated_lx, 1);      // ,1 = retained
   delay(50);
 
   char _uv_index[8];                                // Buffer big enough for 7-character float
   dtostrf(uv_index, 3, 1, _uv_index);               // Leave room for too large numbers!
 
-  client.publish("home/weather/solarweatherstation/uvindex", _uv_index, 1);      // ,1 = retained
+  client.publish("homeassistant/sensor/solarweatherstation/uvindex", _uv_index, 1);      // ,1 = retained
   delay(50);
 
   if (volt > 3.3) {          //check if batt still ok, if yes
@@ -776,7 +782,7 @@ char ZambrettiLetter() {
     }
   }
   char* tmp1 = &z_letter;
-  client.publish("home/weather/solarweatherstation/zletter", tmp1, 1);         // ,1 = retained
+  client.publish("homeassistant/weather/solarweatherstation/zletter", tmp1, 1);         // ,1 = retained
   delay(50);
   Serial.print("This is Zambretti's famous letter: ");
   Serial.println(z_letter);
