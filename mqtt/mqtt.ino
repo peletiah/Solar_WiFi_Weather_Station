@@ -109,7 +109,7 @@ float DewPointSpread;               // Difference between actual temperature and
 byte failureCode = 0;
 unsigned long measured_vis = 0;
 unsigned long measured_ir = 0;
-float measured_lx = 0.0;
+float calculated_lx = 0.0;
 float uv_index = 0.0;
 
 
@@ -358,15 +358,9 @@ void setup() {
       postStr += "&field5=";
       postStr += String(measured_pres);
       postStr += "&field6=";
-      postStr += String(DewpointTemperature);
-      postStr += "&field7=";
       postStr += String(measured_vis);
-      postStr += "&field8=";
-      postStr += String(measured_lx);
-      postStr += "&field9=";
-      postStr += String(uv_index);
-      postStr += "&field10=";
-      postStr += String(HeatIndex);
+      postStr += "&field7=";
+      postStr += String(calculated_lx);
       postStr += "&status=";
       postStr += String(forecast_in_words + ": " + ZambrettisWords + ". " + pressure_in_words + " " + trend_in_words + ". " + accuracy_in_words + " " + accuracy_in_percent + "%25."); // Percentage sign needs to be URL-encoded
       postStr += " HTTP/1.1\r\nHost: a.c.d\r\nConnection: close\r\n\r\n";
@@ -465,10 +459,10 @@ void setup() {
   delay(50);
 
 
-  char _measured_lx[8];                                // Buffer big enough for 7-character float
-  dtostrf(measured_lx, 3, 1, _measured_lx);               // Leave room for too large numbers!
+  char _calculated_lx[8];                                // Buffer big enough for 7-character float
+  dtostrf(calculated_lx, 3, 1, _calculated_lx);               // Leave room for too large numbers!
 
-  client.publish("home/weather/solarweatherstation/lux", _measured_lx, 1);      // ,1 = retained
+  client.publish("home/weather/solarweatherstation/lux", _calculated_lx, 1);      // ,1 = retained
   delay(50);
 
   char _uv_index[8];                                // Buffer big enough for 7-character float
@@ -579,13 +573,13 @@ void measurementEvent() {
   measured_ir = mySI1145.getAlsIrData();
   uv_index = mySI1145.getUvIndex();
 
-  measured_lx = calcLux(measured_vis, measured_ir);
+  calculated_lx = calcLux(measured_vis, measured_ir);
   Serial.print("Ambient Light: ");
   Serial.println(measured_vis);
   Serial.print("Infrared Light: ");
   Serial.println(measured_ir);
   Serial.print("Lux: ");
-  Serial.println(measured_lx);
+  Serial.println(calculated_lx);
   Serial.print("UV Index: ");
   Serial.println(uv_index);
 

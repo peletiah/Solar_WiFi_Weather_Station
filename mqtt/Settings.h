@@ -35,7 +35,7 @@ const char* mqtt_server = "10.0.0.30";      // MQTT Server (broker) address
 
 #define ELEVATION (446)             //Enter your elevation in m ASL to calculate rel pressure (ASL/QNH) at your place
 
-#define sleepTimeMin (1)           //setting of deepsleep time in minutes (default: 10)
+#define sleepTimeMin (10)           //setting of deepsleep time in minutes (default: 10)
 
 // NTP   --> Just a remark - the program needs the time only for the timestamp, so for the Zambretti forecast
 //           the timezone and the DST (Daylight Saving Time) is irrelevant. This is why I did not take care of DST 
