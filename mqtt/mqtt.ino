@@ -376,105 +376,140 @@ void setup() {
   //*******************************************************************************
   // code block for publishing all data to MQTT
 
+  client.publish("homeassistant/sensor/solarweatherstation/temp/config", "{\"device_class\": \"temperature\", \"name\": \"Temperature\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"°C\", \"value_template\": \"{{ value_json.temperature}}\" }", 1);      // ,1 = retained
+  delay(50);
+
+  client.publish("homeassistant/sensor/solarweatherstation/ahumidity/config", "{\"device_class\": \"humidity\", \"name\": \"Adjusted Humidity\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"%\", \"value_template\": \"{{ value_json.humidity}}\" }", 1);      // ,1 = retained
+  delay(50);
+
+  client.publish("homeassistant/sensor/solarweatherstation/mpressure/config", "{\"device_class\": \"pressure\", \"name\": \"Measured Pressure\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"mbar\", \"value_template\": \"{{ value_json.mespressure}}\" }", 1);      // ,1 = retained
+  delay(50);
+
+  client.publish("homeassistant/sensor/solarweatherstation/relpressure/config", "{\"device_class\": \"pressure\", \"name\": \"Relative Pressure\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"mbar\", \"value_template\": \"{{ value_json.relpressure}}\" }", 1);      // ,1 = retained
+  delay(50);
+
+  client.publish("homeassistant/sensor/solarweatherstation/volt/config", "{\"device_class\": \"voltage\", \"name\": \"Battery Voltage\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"V\", \"value_template\": \"{{ value_json.voltage}}\" }", 1);      // ,1 = retained
+  delay(50);
+  
+  client.publish("homeassistant/sensor/solarweatherstation/dewpoint/config", "{\"device_class\": \"temperature\", \"name\": \"Dewpoint\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"°C\", \"value_template\": \"{{ value_json.dewpoint}}\" }", 1);      // ,1 = retained
+  delay(50);
+
+  client.publish("homeassistant/sensor/solarweatherstation/heatindex/config", "{\"device_class\": \"temperature\", \"name\": \"Heat Index\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"°C\", \"value_template\": \"{{ value_json.heatindex}}\" }", 1);      // ,1 = retained
+  delay(50);
+  
+  client.publish("homeassistant/sensor/solarweatherstation/accuracy/config", "{\"device_class\": \"power_factor\", \"name\": \"Accuracy\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"%\", \"value_template\": \"{{ value_json.accuracy}}\" }", 1);      // ,1 = retained
+  delay(50);
+  
+  client.publish("homeassistant/sensor/solarweatherstation/dewpointspread/config", "{\"device_class\": \"temperature\", \"name\": \"Dewpoint spread\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"°C\", \"value_template\": \"{{ value_json.dewpointspread}}\" }", 1);      // ,1 = retained
+  delay(50);
+
+  client.publish("homeassistant/sensor/solarweatherstation/zambretty/config", "{\"name\": \"Zambretti says\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"value_template\": \"{{ value_json.zambretti}}\" }", 1);      // ,1 = retained
+  delay(50);
+
+  client.publish("homeassistant/sensor/solarweatherstation/trendw/config", "{\"name\": \"Trend in words\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"value_template\": \"{{ value_json.trendinwords}}\" }", 1);      // ,1 = retained
+  delay(50);
+
+  client.publish("homeassistant/sensor/solarweatherstation/trend/config", "{\"name\": \"Trend\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"value_template\": \"{{ value_json.trend}}\" }", 1);      // ,1 = retained
+  delay(50);
+
+  client.publish("homeassistant/sensor/solarweatherstation/vis/config", "{\"device_class\": \"illuminance\", \"name\": \"Measured Illuminance\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"lx\", \"value_template\": \"{{ value_json.vis}}\" }", 1);      // ,1 = retained
+  delay(50);
+  
+  client.publish("homeassistant/sensor/solarweatherstation/infrared/config", "{\"device_class\": \"illuminance\", \"name\": \"Infrared light\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"lx\", \"value_template\": \"{{ value_json.infrared}}\" }", 1);      // ,1 = retained
+  delay(50);
+
+  client.publish("homeassistant/sensor/solarweatherstation/uvindex/config", "{\"device_class\": \"illuminance\", \"name\": \"UV Index\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"value_template\": \"{{ value_json.uvindex}}\" }", 1);      // ,1 = retained
+  delay(50);
+
+  client.publish("homeassistant/sensor/solarweatherstation/illu/config", "{\"device_class\": \"illuminance\", \"name\": \"Calculated Illuminance\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"lx\", \"value_template\": \"{{ value_json.illuminance}}\" }", 1);      // ,1 = retained
+  delay(50);
+
+  
   char _adjusted_temp[8];                                // Buffer big enough for 7-character float
   dtostrf(adjusted_temp, 3, 1, _adjusted_temp);               // Leave room for too large numbers!
-
-  client.publish("homeassistant/sensor/solarweatherstation/tempc/config", "{\"device_class\": \"temperature\", \"name\": \"Temperature\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"°C\", \"value_template\": \"{{ value_json.temperature}}\" }", 1);      // ,1 = retained
-  delay(50);
-
-  client.publish("homeassistant/sensor/solarweatherstation/state", "{\"temperature\": " +_adjusted_temp + " }", 1);      // ,1 = retained
-  delay(50);
-
-  client.publish("homeassistant/sensor/solarweatherstation/tempc", _adjusted_temp, 1);      // ,1 = retained
-  delay(50);
 
   char _adjusted_humi[8];                                // Buffer big enough for 7-character float
   dtostrf(adjusted_humi, 3, 0, _adjusted_humi);               // Leave room for too large numbers!
 
-  client.publish("homeassistant/sensor/solarweatherstation/humi", _adjusted_humi, 1);      // ,1 = retained
-  delay(50);
-
   char _measured_pres[8];                                // Buffer big enough for 7-character float
   dtostrf(measured_pres, 3, 0, _measured_pres);               // Leave room for too large numbers!
-
-  client.publish("homeassistant/sensor/solarweatherstation/abshpa", _measured_pres, 1);      // ,1 = retained
-  delay(50);
 
   char _rel_pressure_rounded[8];                                // Buffer big enough for 7-character float
   dtostrf(rel_pressure_rounded, 3, 0, _rel_pressure_rounded);               // Leave room for too large numbers!
 
-  client.publish("homeassistant/sensor/solarweatherstation/relhpa", _rel_pressure_rounded, 1);      // ,1 = retained
-  delay(50);
-
   char _volt[8];                                // Buffer big enough for 7-character float
   dtostrf(volt, 3, 2, _volt);               // Leave room for too large numbers!
-
-  client.publish("homeassistant/sensor/solarweatherstation/battv", _volt, 1);      // ,1 = retained
-  delay(50/;
 
   char _DewpointTemperature[8];                                // Buffer big enough for 7-character float
   dtostrf(DewpointTemperature, 3, 1, _DewpointTemperature);               // Leave room for too large numbers!
 
-  client.publish("homeassistant/sensor/solarweatherstation/dewpointc", _DewpointTemperature, 1);      // ,1 = retained
-  delay(50);
-
   char _HeatIndex[8];                                // Buffer big enough for 7-character float
   dtostrf(HeatIndex, 3, 1, _HeatIndex);               // Leave room for too large numbers!
-
-  client.publish("homeassistant/sensor/solarweatherstation/heatindexc", _HeatIndex, 1);      // ,1 = retained
-  delay(50);
 
   char _accuracy_in_percent[8];                                // Buffer big enough for 7-character float
   dtostrf(accuracy_in_percent, 3, 0, _accuracy_in_percent);               // Leave room for too large numbers!
 
-  client.publish("homeassistant/sensor/solarweatherstation/accuracy", _accuracy_in_percent, 1);      // ,1 = retained
-  delay(50);
-
   char _DewPointSpread[8];                                // Buffer big enough for 7-character float
   dtostrf(DewPointSpread, 3, 1, _DewPointSpread);               // Leave room for too large numbers!
 
-  client.publish("homeassistant/sensor/solarweatherstation/spreadc", _DewPointSpread, 1);      // ,1 = retained
-  delay(50);
-
   char tmp1[128];
   ZambrettisWords.toCharArray(tmp1, 128);
-  client.publish("homeassistant/sensor/solarweatherstation/zambrettisays", tmp1, 1);
-  delay(50);
-
+  
   char tmp2[128];
   trend_in_words.toCharArray(tmp2, 128);
-  client.publish("homeassistant/sensor/solarweatherstation/trendinwords", tmp2, 1);
-  delay(50);
-
+  
   char _trend[8];                                // Buffer big enough for 7-character float
   dtostrf(pressure_difference[11], 3, 2, _trend);               // Leave room for too large numbers!
-
-  client.publish("homeassistant/sensor/solarweatherstation/trend", _trend, 1);      // ,1 = retained
-  delay(50);
 
   char _measured_vis[8];                                // Buffer big enough for 7-character float
   dtostrf(measured_vis, 3, 1, _measured_vis);               // Leave room for too large numbers!
 
-  client.publish("homeassistant/sensor/solarweatherstation/vis", _measured_vis, 1);      // ,1 = retained
-  delay(50);
-
   char _measured_ir[8];                                // Buffer big enough for 7-character float
   dtostrf(measured_ir, 3, 1, _measured_ir);               // Leave room for too large numbers!
-
-  client.publish("homeassistant/sensor/solarweatherstation/ir", _measured_ir, 1);      // ,1 = retained
-  delay(50);
-
 
   char _calculated_lx[8];                                // Buffer big enough for 7-character float
   dtostrf(calculated_lx, 3, 1, _calculated_lx);               // Leave room for too large numbers!
 
-  client.publish("homeassistant/sensor/solarweatherstation/lux", _calculated_lx, 1);      // ,1 = retained
-  delay(50);
-
   char _uv_index[8];                                // Buffer big enough for 7-character float
   dtostrf(uv_index, 3, 1, _uv_index);               // Leave room for too large numbers!
 
-  client.publish("homeassistant/sensor/solarweatherstation/uvindex", _uv_index, 1);      // ,1 = retained
+  std::string temp_state = "{ \"temperature\": ";
+  temp_state.append(_adjusted_temp);
+  temp_state.append(", \"humidity\": ");
+  temp_state.append(_adjusted_humi);
+  temp_state.append(", \"mespressure\": ");
+  temp_state.append(_measured_pres);
+  temp_state.append(", \"relpressure\": ");
+  temp_state.append(_rel_pressure_rounded);
+  temp_state.append(", \"voltage\": ");
+  temp_state.append(_volt);
+  temp_state.append(", \"dewpoint\": ");
+  temp_state.append(_DewpointTemperature);
+  temp_state.append(", \"heatindex\": ");
+  temp_state.append(_HeatIndex);
+  temp_state.append(", \"accuracy\": ");
+  temp_state.append(_accuracy_in_percent);
+  temp_state.append(", \"dewpointspread\": ");
+  temp_state.append(_DewPointSpread);
+  temp_state.append(", \"zambretti\": ");
+  temp_state.append(tmp1);
+  temp_state.append(", \"trendinwords\": ");
+  temp_state.append(tmp2);
+  temp_state.append(", \"trend\": ");
+  temp_state.append(_trend);
+  temp_state.append(", \"vis\": ");
+  temp_state.append(_measured_vis);
+  temp_state.append(", \"infrared\": ");
+  temp_state.append(_measured_ir);
+  temp_state.append(", \"uvindex\": ");
+  temp_state.append(_uv_index);
+  temp_state.append(", \"illuminance\": ");
+  temp_state.append(_calculated_lx);
+  temp_state.append(" }");
+  
+  const char *_temp_state = temp_state.c_str();
+
+  client.publish("homeassistant/sensor/solarweatherstation/state", _temp_state, 1);      // ,1 = retained
   delay(50);
 
   if (volt > 3.3) {          //check if batt still ok, if yes
@@ -590,7 +625,7 @@ void measurementEvent() {
   Serial.println(uv_index);
 
   failureCode = mySI1145.getFailureMode(); //reads the response register
-  if((failureCode&128)){ // if bit 7 is set in response register, there is a failure
+  if ((failureCode & 128)) { // if bit 7 is set in response register, there is a failure
     handleFailure(failureCode);
   }
 
