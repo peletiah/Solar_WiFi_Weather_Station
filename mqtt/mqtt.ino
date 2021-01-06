@@ -69,7 +69,7 @@
   // 5. Using Sleep mode to reduce the energy consumed
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  /***************************************************
+ /***************************************************
    VERY IMPORTANT:
  *                                                 *
    Enter your personal settings in Settings.h !
@@ -376,52 +376,52 @@ void setup() {
   //*******************************************************************************
   // code block for publishing all data to MQTT
 
-  client.publish("homeassistant/sensor/solarweatherstation/temp/config", "{\"device_class\": \"temperature\", \"name\": \"Temperature\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"°C\", \"value_template\": \"{{ value_json.temperature}}\" }", 1);      // ,1 = retained
+  client.publish("homeassistant/sensor/solarweatherstation/temp/config", "{\"device_class\": \"temperature\", \"name\": \"Temperature\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"°C\", \"value_template\": \"{{ value_json.temperature}}\", \"unique_id\": \"weatherstation_temperature\" }", 1);      // ,1 = retained
   delay(50);
 
-  client.publish("homeassistant/sensor/solarweatherstation/ahumidity/config", "{\"device_class\": \"humidity\", \"name\": \"Adjusted Humidity\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"%\", \"value_template\": \"{{ value_json.humidity}}\" }", 1);      // ,1 = retained
+  client.publish("homeassistant/sensor/solarweatherstation/ahumidity/config", "{\"device_class\": \"humidity\", \"name\": \"Adjusted Humidity\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"%\", \"value_template\": \"{{ value_json.humidity}}\", \"unique_id\": \"weatherstation_humidity\" }", 1);      // ,1 = retained
   delay(50);
 
-  client.publish("homeassistant/sensor/solarweatherstation/mpressure/config", "{\"device_class\": \"pressure\", \"name\": \"Measured Pressure\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"mbar\", \"value_template\": \"{{ value_json.mespressure}}\" }", 1);      // ,1 = retained
+  client.publish("homeassistant/sensor/solarweatherstation/mpressure/config", "{\"device_class\": \"pressure\", \"name\": \"Measured Pressure\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"mbar\", \"value_template\": \"{{ value_json.mespressure}}\", \"unique_id\": \"weatherstation_measured_pressure\" }", 1);      // ,1 = retained
   delay(50);
 
-  client.publish("homeassistant/sensor/solarweatherstation/relpressure/config", "{\"device_class\": \"pressure\", \"name\": \"Relative Pressure\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"mbar\", \"value_template\": \"{{ value_json.relpressure}}\" }", 1);      // ,1 = retained
+  client.publish("homeassistant/sensor/solarweatherstation/relpressure/config", "{\"device_class\": \"pressure\", \"name\": \"Relative Pressure\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"mbar\", \"value_template\": \"{{ value_json.relpressure}}\", \"unique_id\": \"weatherstation_relative_pressure\" }", 1);      // ,1 = retained
   delay(50);
 
-  client.publish("homeassistant/sensor/solarweatherstation/volt/config", "{\"device_class\": \"voltage\", \"name\": \"Battery Voltage\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"V\", \"value_template\": \"{{ value_json.voltage}}\" }", 1);      // ,1 = retained
+  client.publish("homeassistant/sensor/solarweatherstation/volt/config", "{\"device_class\": \"voltage\", \"name\": \"Battery Voltage\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"V\", \"value_template\": \"{{ value_json.voltage}}\", \"unique_id\": \"weatherstation_battery_voltage\" }", 1);      // ,1 = retained
   delay(50);
   
-  client.publish("homeassistant/sensor/solarweatherstation/dewpoint/config", "{\"device_class\": \"temperature\", \"name\": \"Dewpoint\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"°C\", \"value_template\": \"{{ value_json.dewpoint}}\" }", 1);      // ,1 = retained
+  client.publish("homeassistant/sensor/solarweatherstation/dewpoint/config", "{\"device_class\": \"temperature\", \"name\": \"Dewpoint\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"°C\", \"value_template\": \"{{ value_json.dewpoint}}\", \"unique_id\": \"weatherstation_dewpoint\" }", 1);      // ,1 = retained
   delay(50);
 
-  client.publish("homeassistant/sensor/solarweatherstation/heatindex/config", "{\"device_class\": \"temperature\", \"name\": \"Heat Index\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"°C\", \"value_template\": \"{{ value_json.heatindex}}\" }", 1);      // ,1 = retained
+  client.publish("homeassistant/sensor/solarweatherstation/heatindex/config", "{\"device_class\": \"temperature\", \"name\": \"Heat Index\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"°C\", \"value_template\": \"{{ value_json.heatindex}}\", \"unique_id\": \"weatherstation_heatindex\" }", 1);      // ,1 = retained
   delay(50);
   
-  client.publish("homeassistant/sensor/solarweatherstation/accuracy/config", "{\"device_class\": \"power_factor\", \"name\": \"Accuracy\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"%\", \"value_template\": \"{{ value_json.accuracy}}\" }", 1);      // ,1 = retained
+  client.publish("homeassistant/sensor/solarweatherstation/accuracy/config", "{\"device_class\": \"power_factor\", \"name\": \"Accuracy\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"%\", \"value_template\": \"{{ value_json.accuracy}}\", \"unique_id\": \"weatherstation_accuracy\" }", 1);      // ,1 = retained
   delay(50);
   
-  client.publish("homeassistant/sensor/solarweatherstation/dewpointspread/config", "{\"device_class\": \"temperature\", \"name\": \"Dewpoint spread\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"°C\", \"value_template\": \"{{ value_json.dewpointspread}}\" }", 1);      // ,1 = retained
+  client.publish("homeassistant/sensor/solarweatherstation/dewpointspread/config", "{\"device_class\": \"temperature\", \"name\": \"Dewpoint spread\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"°C\", \"value_template\": \"{{ value_json.dewpointspread}}\", \"unique_id\": \"weatherstation_dewpoint_spread\" }", 1);      // ,1 = retained
   delay(50);
 
-  client.publish("homeassistant/sensor/solarweatherstation/zambretty/config", "{\"name\": \"Zambretti says\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"value_template\": \"{{ value_json.zambretti}}\" }", 1);      // ,1 = retained
+  client.publish("homeassistant/sensor/solarweatherstation/zambretti/config", "{\"name\": \"Zambretti says\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"value_template\": \"{{ value_json.zambretti}}\", \"unique_id\": \"weatherstation_zambretti_says\" }", 1);      // ,1 = retained
   delay(50);
 
-  client.publish("homeassistant/sensor/solarweatherstation/trendw/config", "{\"name\": \"Trend in words\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"value_template\": \"{{ value_json.trendinwords}}\" }", 1);      // ,1 = retained
+  client.publish("homeassistant/sensor/solarweatherstation/trendw/config", "{\"name\": \"Trend in words\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"value_template\": \"{{ value_json.trendinwords}}\", \"unique_id\": \"weatherstation_trend_in_words\" }", 1);      // ,1 = retained
   delay(50);
 
-  client.publish("homeassistant/sensor/solarweatherstation/trend/config", "{\"name\": \"Trend\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"value_template\": \"{{ value_json.trend}}\" }", 1);      // ,1 = retained
+  client.publish("homeassistant/sensor/solarweatherstation/trend/config", "{\"name\": \"Trend\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"value_template\": \"{{ value_json.trend}}\", \"unique_id\": \"weatherstation_trend\" }", 1);      // ,1 = retained
   delay(50);
 
-  client.publish("homeassistant/sensor/solarweatherstation/vis/config", "{\"device_class\": \"illuminance\", \"name\": \"Measured Illuminance\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"lx\", \"value_template\": \"{{ value_json.vis}}\" }", 1);      // ,1 = retained
+  client.publish("homeassistant/sensor/solarweatherstation/vis/config", "{\"device_class\": \"illuminance\", \"name\": \"Measured Illuminance\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"lx\", \"value_template\": \"{{ value_json.vis}}\", \"unique_id\": \"weatherstation_vis\" }", 1);      // ,1 = retained
   delay(50);
   
-  client.publish("homeassistant/sensor/solarweatherstation/infrared/config", "{\"device_class\": \"illuminance\", \"name\": \"Infrared light\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"lx\", \"value_template\": \"{{ value_json.infrared}}\" }", 1);      // ,1 = retained
+  client.publish("homeassistant/sensor/solarweatherstation/infrared/config", "{\"device_class\": \"illuminance\", \"name\": \"Infrared light\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"lx\", \"value_template\": \"{{ value_json.infrared}}\", \"unique_id\": \"weatherstation_infrared\" }", 1);      // ,1 = retained
   delay(50);
 
-  client.publish("homeassistant/sensor/solarweatherstation/uvindex/config", "{\"device_class\": \"illuminance\", \"name\": \"UV Index\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"value_template\": \"{{ value_json.uvindex}}\" }", 1);      // ,1 = retained
+  client.publish("homeassistant/sensor/solarweatherstation/uvindex/config", "{\"device_class\": \"illuminance\", \"name\": \"UV Index\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"value_template\": \"{{ value_json.uvindex}}\", \"unique_id\": \"weatherstation_uvindex\" }", 1);      // ,1 = retained
   delay(50);
 
-  client.publish("homeassistant/sensor/solarweatherstation/illu/config", "{\"device_class\": \"illuminance\", \"name\": \"Calculated Illuminance\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"lx\", \"value_template\": \"{{ value_json.illuminance}}\" }", 1);      // ,1 = retained
+  client.publish("homeassistant/sensor/solarweatherstation/illu/config", "{\"device_class\": \"illuminance\", \"name\": \"Calculated Illuminance\", \"state_topic\": \"homeassistant/sensor/solarweatherstation/state\", \"unit_of_measurement\": \"lx\", \"value_template\": \"{{ value_json.illuminance}}\", \"unique_id\": \"weatherstation_illuminance\" }", 1);      // ,1 = retained
   delay(50);
 
   
@@ -491,11 +491,11 @@ void setup() {
   temp_state.append(_accuracy_in_percent);
   temp_state.append(", \"dewpointspread\": ");
   temp_state.append(_DewPointSpread);
-  temp_state.append(", \"zambretti\": ");
+  temp_state.append(", \"zambretti\": \"");
   temp_state.append(tmp1);
-  temp_state.append(", \"trendinwords\": ");
+  temp_state.append("\", \"trendinwords\": \"");
   temp_state.append(tmp2);
-  temp_state.append(", \"trend\": ");
+  temp_state.append("\", \"trend\": ");
   temp_state.append(_trend);
   temp_state.append(", \"vis\": ");
   temp_state.append(_measured_vis);
@@ -817,8 +817,8 @@ char ZambrettiLetter() {
     }
   }
   char* tmp1 = &z_letter;
-  client.publish("homeassistant/weather/solarweatherstation/zletter", tmp1, 1);         // ,1 = retained
-  delay(50);
+  // client.publish("homeassistant/weather/solarweatherstation/zletter", tmp1, 1);         // ,1 = retained
+  // delay(50);
   Serial.print("This is Zambretti's famous letter: ");
   Serial.println(z_letter);
   return z_letter;
